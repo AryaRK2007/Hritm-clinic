@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0B132B" />
+  <meta name="description" content="Plan your visit to Hri-thm Clinic in Solapur and learn what to bring to a cardiology consultation." />
+  <title>Plan Your Visit | Hri-thm Clinic</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div id="site-header"></div>
+  <main id="main-content">
+    <section class="page-hero">
+      <div class="container">
+        <span class="hero-tag">Your visit, thoughtfully planned</span>
+        <h1>Let’s make your first step feel simple.</h1>
+        <p>Use this planning tool to organize what you would like to discuss at your cardiology consultation.</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container appointment-layout">
+        <div class="form-panel">
+          <span class="eyebrow">Visit planner</span>
+          <h2>Prepare your appointment notes.</h2>
+          <p>Complete the fields below to create a summary for your own reference.</p>
+          <form id="appointment-form">
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="patient-name">Your name</label>
+                <input id="patient-name" name="name" autocomplete="name" required />
+              </div>
+              <div class="form-field">
+                <label for="visit-type">What would you like to discuss?</label>
+                <select id="visit-type" name="visitType" required>
+                  <option value="">Choose a topic</option>
+                  <option>Cardiology consultation</option>
+                  <option>Preventive heart assessment</option>
+                  <option>Cardiac diagnostic test</option>
+                  <option>Follow-up visit</option>
+                  <option>Other concern</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label for="preferred-date">Preferred date</label>
+                <input id="preferred-date" name="preferredDate" type="date" />
+              </div>
+              <div class="form-field">
+                <label for="preferred-time">Preferred time</label>
+                <select id="preferred-time" name="preferredTime">
+                  <option value="">No preference</option>
+                  <option>Morning</option>
+                  <option>Afternoon</option>
+                  <option>Evening</option>
+                </select>
+              </div>
+              <div class="form-field form-field-full">
+                <label for="visit-notes">Notes for your visit <span>(optional)</span></label>
+                <textarea id="visit-notes" name="notes" placeholder="For example: questions you would like to ask or records you plan to bring."></textarea>
+              </div>
+            </div>
+            <p class="form-note">This planning tool does not send your information to Hri-thm Clinic or save it on this website, and it does not confirm an appointment. Your browser may retain form entries. Please contact the clinic directly to check availability, and do not enter sensitive medical details here.</p>
+            <div class="form-actions">
+              <button class="btn btn-violet" type="submit">Create my visit summary <span aria-hidden="true">→</span></button>
+            </div>
+            <div id="appointment-summary" class="form-status" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+
+        <aside>
+          <div class="info-card">
+            <span class="eyebrow">Before you arrive</span>
+            <h2>A few helpful reminders.</h2>
+            <ul class="info-list">
+              <li>Bring previous reports, test results, and a current medication list.</li>
+              <li>Note when your symptoms began and what tends to bring them on.</li>
+              <li>Write down questions you would like to discuss with the doctor.</li>
+              <li>Follow any specific instructions provided when your appointment is confirmed.</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <h2>Need urgent care?</h2>
+            <p>Hri-thm Clinic is for planned consultations and non-invasive diagnostics. For severe chest pain, sudden breathlessness, or fainting, seek immediate help at the nearest hospital emergency department.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="assets/main.js"></script>
+  <script src="assets/appointment-form.js"></script>
+</body>
+</html>
