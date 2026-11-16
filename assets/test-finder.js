@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   const selector = document.getElementById('symptomSelector');
+  const chipsContainer = document.getElementById('finderQuickChips');
   const resultBox = document.getElementById('finderResult');
   const resultTitle = document.getElementById('resultTitle');
   const resultDesc = document.getElementById('resultDesc');
@@ -29,16 +30,46 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  selector.addEventListener('change', (e) => {
-    const selectedKey = e.target.value;
-
+  const renderResult = (selectedKey) => {
     if (selectedKey && testDatabase[selectedKey]) {
       const data = testDatabase[selectedKey];
       resultTitle.textContent = data.title;
       resultDesc.textContent = data.desc;
       resultBox.style.display = 'block';
+      resultBox.classList.add('is-visible');
     } else {
+      resultBox.classList.remove('is-visible');
       resultBox.style.display = 'none';
     }
+
+    if (chipsContainer) {
+      chipsContainer.querySelectorAll('.finder-chip').forEach(btn => {
+        const isSelected = btn.getAttribute('data-value') === selectedKey;
+        btn.classList.toggle('is-active', isSelected);
+        btn.setAttribute('aria-pressed', String(isSelected));
+      });
+    }
+  };
+
+  if (chipsContainer) {
+    Array.from(selector.options).forEach(option => {
+      if (!option.value) return;
+      const chip = document.createElement('button');
+      chip.type = 'button';
+      chip.className = 'finder-chip';
+      chip.setAttribute('data-value', option.value);
+      chip.setAttribute('aria-pressed', 'false');
+      chip.textContent = option.textContent;
+      chip.addEventListener('click', () => {
+        const nextVal = selector.value === option.value ? '' : option.value;
+        selector.value = nextVal;
+        renderResult(nextVal);
+      });
+      chipsContainer.appendChild(chip);
+    });
+  }
+
+  selector.addEventListener('change', (e) => {
+    renderResult(e.target.value);
   });
 });

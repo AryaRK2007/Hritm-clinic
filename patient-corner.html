@@ -9,29 +9,36 @@
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
-<body>
+<body class="patient-page">
   <a class="skip-link" href="#main-content">Skip to content</a>
   <div id="site-header"></div>
   <main id="main-content">
     <section class="page-hero">
+      <div class="hero-ecg-bg" aria-hidden="true">
+        <svg viewBox="0 0 1440 220" fill="none" preserveAspectRatio="none">
+          <path d="M0 130H340L370 130L392 88L416 168L442 42L468 182L490 112L510 130H880L910 130L932 95L955 162L980 54L1006 176L1026 116L1044 130H1440" />
+        </svg>
+      </div>
       <div class="container">
         <span class="hero-tag">Patient corner</span>
         <h1>Feel prepared for your heart-care journey.</h1>
         <p>Practical information to help you get ready for your consultation and understand what to expect.</p>
-        <a href="book-appointment.html" class="btn btn-violet">Plan your visit <span aria-hidden="true">→</span></a>
+        <div class="hero-actions">
+          <a href="book-appointment.html" class="btn btn-violet">Plan your visit <span aria-hidden="true">→</span></a>
+        </div>
       </div>
     </section>
 
-    <section class="content-section">
-      <div class="container">
-        <div class="section-header">
+    <section class="content-section content-section-light">
+      <div class="container faq-layout">
+        <div class="section-header section-header-left faq-intro">
           <span class="eyebrow">Frequently asked questions</span>
           <h2>A few things you may be wondering.</h2>
         </div>
-        <div class="content-narrow faq-list">
+        <div class="faq-list">
           <details class="faq-item">
             <summary>What should I bring to my first consultation?</summary>
             <p>Bring previous medical reports and test results, a list of medicines you take, and any questions you would like to discuss. Sharing relevant family and medical history can also help your doctor understand your concerns.</p>
@@ -57,16 +64,19 @@
     </section>
 
     <section class="content-section content-section-tinted">
-      <div class="container inline-cta">
-        <div>
-          <h2>Your questions deserve time.</h2>
-          <p>Prepare for a specialist consultation at Hri-thm Clinic.</p>
+      <div class="container">
+        <div class="inline-cta">
+          <div>
+            <h2>Your questions deserve time.</h2>
+            <p>Prepare for a specialist consultation at Hri-thm Clinic.</p>
+          </div>
+          <a href="book-appointment.html" class="btn btn-violet">Plan a visit <span aria-hidden="true">→</span></a>
         </div>
-        <a href="book-appointment.html" class="btn btn-violet">Plan a visit <span aria-hidden="true">→</span></a>
       </div>
     </section>
   </main>
   <div id="site-footer"></div>
   <script src="assets/main.js"></script>
+  <script src="assets/faq-accordion.js"></script>
 </body>
 </html>

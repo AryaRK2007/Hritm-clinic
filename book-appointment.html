@@ -9,14 +9,19 @@
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
-<body>
+<body class="appointment-page">
   <a class="skip-link" href="#main-content">Skip to content</a>
   <div id="site-header"></div>
   <main id="main-content">
     <section class="page-hero">
+      <div class="hero-ecg-bg" aria-hidden="true">
+        <svg viewBox="0 0 1440 220" fill="none" preserveAspectRatio="none">
+          <path d="M0 130H340L370 130L392 88L416 168L442 42L468 182L490 112L510 130H880L910 130L932 95L955 162L980 54L1006 176L1026 116L1044 130H1440" />
+        </svg>
+      </div>
       <div class="container">
         <span class="hero-tag">Your visit, thoughtfully planned</span>
         <h1>Let’s make your first step feel simple.</h1>
@@ -24,7 +29,7 @@
       </div>
     </section>
 
-    <section class="content-section">
+    <section class="content-section content-section-light">
       <div class="container appointment-layout">
         <div class="form-panel">
           <span class="eyebrow">Visit planner</span>
@@ -65,7 +70,7 @@
                 <textarea id="visit-notes" name="notes" placeholder="For example: questions you would like to ask or records you plan to bring."></textarea>
               </div>
             </div>
-            <p class="form-note">This planning tool does not send your information to Hri-thm Clinic or save it on this website, and it does not confirm an appointment. Your browser may retain form entries. Please contact the clinic directly to check availability, and do not enter sensitive medical details here.</p>
+            <p class="form-note important-note">This planning tool does not send your information to Hri-thm Clinic or save it on this website, and it does not confirm an appointment. Your browser may retain form entries. Please contact the clinic directly to check availability, and do not enter sensitive medical details here.</p>
             <div class="form-actions">
               <button class="btn btn-violet" type="submit">Create my visit summary <span aria-hidden="true">→</span></button>
             </div>
@@ -73,7 +78,7 @@
           </form>
         </div>
 
-        <aside>
+        <aside class="appointment-sidebar">
           <div class="info-card">
             <span class="eyebrow">Before you arrive</span>
             <h2>A few helpful reminders.</h2>
@@ -84,7 +89,7 @@
               <li>Follow any specific instructions provided when your appointment is confirmed.</li>
             </ul>
           </div>
-          <div class="info-card">
+          <div class="info-card info-card-urgent important-note" role="note">
             <h2>Need urgent care?</h2>
             <p>Hri-thm Clinic is for planned consultations and non-invasive diagnostics. For severe chest pain, sudden breathlessness, or fainting, seek immediate help at the nearest hospital emergency department.</p>
           </div>

@@ -9,7 +9,7 @@
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body class="home-page">
@@ -18,6 +18,11 @@
 
   <main id="main-content">
     <section class="home-hero">
+      <div class="hero-ecg-bg" aria-hidden="true">
+        <svg viewBox="0 0 1440 220" fill="none" preserveAspectRatio="none">
+          <path d="M0 130H340L370 130L392 88L416 168L442 42L468 182L490 112L510 130H880L910 130L932 95L955 162L980 54L1006 176L1026 116L1044 130H1440" />
+        </svg>
+      </div>
       <div class="container home-hero-grid">
         <div class="home-hero-copy">
           <span class="home-eyebrow"><span class="eyebrow-dot"></span> Preventive cardiology · Solapur</span>
@@ -25,9 +30,9 @@
           <p>Personalized cardiology consultations and non-invasive diagnostics to help you understand your heart health—with care led by Dr. Pankaj S. Gundad.</p>
           <div class="home-hero-actions">
             <a href="book-appointment.html" class="btn btn-violet">Book an appointment <span aria-hidden="true">→</span></a>
-            <a href="services.html" class="text-link">Explore our services <span aria-hidden="true">↗</span></a>
+            <a href="services.html" class="btn btn-ghost-light">Explore our services <span aria-hidden="true">↗</span></a>
           </div>
-          <div class="home-hero-note">
+          <div class="home-hero-note important-note" role="note">
             <span class="note-mark" aria-hidden="true">+</span>
             <span>Thoughtful evaluation. Clear explanations. Care centered on you.</span>
           </div>
@@ -64,7 +69,7 @@
       <div class="container">
         <div class="section-heading home-section-heading">
           <div>
-            <span class="home-eyebrow">Care, with clarity</span>
+            <span class="home-eyebrow"><span class="eyebrow-dot"></span> Care, with clarity</span>
             <h2>Specialist care for every heartbeat.</h2>
           </div>
           <a class="text-link desktop-link" href="services.html">View all services <span aria-hidden="true">↗</span></a>
@@ -72,9 +77,11 @@
 
         <div class="home-service-grid">
           <article class="home-service-card">
-            <span class="service-index">01</span>
-            <div class="home-service-icon" aria-hidden="true">
-              <svg viewBox="0 0 32 32" fill="none"><path d="M27 11.5c0 7.5-11 15-11 15S5 19 5 11.5A6.5 6.5 0 0 1 16 7a6.5 6.5 0 0 1 11 4.5Z"/><path d="M3 16h7l3-5 4 10 3-5h9"/></svg>
+            <div class="service-card-top">
+              <div class="home-service-icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32" fill="none"><path d="M27 11.5c0 7.5-11 15-11 15S5 19 5 11.5A6.5 6.5 0 0 1 16 7a6.5 6.5 0 0 1 11 4.5Z"/><path d="M3 16h7l3-5 4 10 3-5h9"/></svg>
+              </div>
+              <span class="service-index">01</span>
             </div>
             <h3>Preventive cardiology</h3>
             <p>Understand your cardiovascular risk and explore practical steps to support your long-term heart health.</p>
@@ -82,9 +89,11 @@
           </article>
 
           <article class="home-service-card">
-            <span class="service-index">02</span>
-            <div class="home-service-icon" aria-hidden="true">
-              <svg viewBox="0 0 32 32" fill="none"><path d="M4 17h6l3-8 6 15 3-7h6"/></svg>
+            <div class="service-card-top">
+              <div class="home-service-icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32" fill="none"><path d="M4 17h6l3-8 6 15 3-7h6"/></svg>
+              </div>
+              <span class="service-index">02</span>
             </div>
             <h3>Clinical cardiology</h3>
             <p>Specialist assessment for concerns such as chest discomfort, breathlessness, palpitations, or high blood pressure.</p>
@@ -92,9 +101,11 @@
           </article>
 
           <article class="home-service-card">
-            <span class="service-index">03</span>
-            <div class="home-service-icon" aria-hidden="true">
-              <svg viewBox="0 0 32 32" fill="none"><path d="M5 6h22v16H5z"/><path d="M11 27h10M16 22v5M9 15h4l2-4 3 8 2-4h3"/></svg>
+            <div class="service-card-top">
+              <div class="home-service-icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32" fill="none"><path d="M5 6h22v16H5z"/><path d="M11 27h10M16 22v5M9 15h4l2-4 3 8 2-4h3"/></svg>
+              </div>
+              <span class="service-index">03</span>
             </div>
             <h3>Heart imaging</h3>
             <p>Non-invasive echocardiography, including advanced strain imaging, to assess heart structure and function.</p>
@@ -102,9 +113,11 @@
           </article>
 
           <article class="home-service-card">
-            <span class="service-index">04</span>
-            <div class="home-service-icon" aria-hidden="true">
-              <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="11"/><path d="M16 9v7l5 3"/></svg>
+            <div class="service-card-top">
+              <div class="home-service-icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="11"/><path d="M16 9v7l5 3"/></svg>
+              </div>
+              <span class="service-index">04</span>
             </div>
             <h3>Cardiac diagnostics</h3>
             <p>ECG, Holter monitoring, and treadmill testing selected to support a careful clinical evaluation.</p>
@@ -119,10 +132,10 @@
       <div class="container">
         <div class="finder-panel">
           <div class="finder-copy">
-            <span class="home-eyebrow">A helpful place to start</span>
+            <span class="home-eyebrow"><span class="eyebrow-dot"></span> A helpful place to start</span>
             <h2 id="finder-heading">Have a question about a heart test?</h2>
             <p>Choose a concern to see examples of evaluations a cardiologist may consider. The right next step depends on your individual history and clinical assessment.</p>
-            <p class="finder-disclaimer">This guide is for general information only and is not a diagnosis or a substitute for medical advice.</p>
+            <p class="finder-disclaimer important-note">This guide is for general information only and is not a diagnosis or a substitute for medical advice.</p>
           </div>
           <div class="finder-control">
             <label for="symptomSelector">What would you like to know about?</label>
@@ -134,6 +147,7 @@
               <option value="family">Family history of premature heart disease</option>
               <option value="chemo">Heart monitoring during or after cancer therapy</option>
             </select>
+            <div id="finderQuickChips" class="finder-chips" aria-label="Quick concern selection"></div>
             <div id="finderResult" class="finder-result" aria-live="polite" aria-atomic="true">
               <h3 id="resultTitle"></h3>
               <p id="resultDesc"></p>
@@ -146,7 +160,7 @@
     <section class="home-cta">
       <div class="container home-cta-inner">
         <div>
-          <span class="home-eyebrow">Your next step starts here</span>
+          <span class="home-eyebrow"><span class="eyebrow-dot"></span> Your next step starts here</span>
           <h2>Make time for your heart.</h2>
           <p>Book a consultation with Hri-thm Clinic in Solapur.</p>
         </div>
@@ -154,10 +168,17 @@
       </div>
     </section>
 
-    <div class="container home-emergency-wrap">
-      <aside class="emergency-banner" aria-label="Emergency notice">
-        <strong>In an emergency:</strong> Hri-thm Clinic is for planned consultations and non-invasive diagnostics, not emergency care. For severe chest pain, sudden breathlessness, or fainting, seek immediate help at the nearest hospital emergency department.
-      </aside>
+    <div class="home-emergency-section">
+      <div class="container home-emergency-wrap">
+        <aside class="emergency-banner important-note" aria-label="Emergency notice">
+          <span class="emergency-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 9v4m0 4h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/></svg>
+          </span>
+          <div>
+            <strong>In an emergency:</strong> Hri-thm Clinic is for planned consultations and non-invasive diagnostics, not emergency care. For severe chest pain, sudden breathlessness, or fainting, seek immediate help at the nearest hospital emergency department.
+          </div>
+        </aside>
+      </div>
     </div>
   </main>
 

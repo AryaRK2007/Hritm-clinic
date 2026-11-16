@@ -22,5 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     summary.textContent = `${lines.join('\n')}\n\nThis summary has not been sent. Please contact Hri-thm Clinic directly to confirm appointment availability.`;
     summary.style.display = 'block';
+    summary.classList.add('is-visible');
   });
 });

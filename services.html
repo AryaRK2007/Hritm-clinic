@@ -9,79 +9,127 @@
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
-<body>
+<body class="services-page">
   <a class="skip-link" href="#main-content">Skip to content</a>
   <div id="site-header"></div>
   <main id="main-content">
     <section class="page-hero">
+      <div class="hero-ecg-bg" aria-hidden="true">
+        <svg viewBox="0 0 1440 220" fill="none" preserveAspectRatio="none">
+          <path d="M0 130H340L370 130L392 88L416 168L442 42L468 182L490 112L510 130H880L910 130L932 95L955 162L980 54L1006 176L1026 116L1044 130H1440" />
+        </svg>
+      </div>
       <div class="container">
         <span class="hero-tag">Specialist heart care</span>
         <h1>Clarity through careful evaluation.</h1>
         <p>From preventive risk assessment to non-invasive diagnostics, care is guided by your history, symptoms, and clinical needs.</p>
-        <a href="book-appointment.html" class="btn btn-violet">Talk with a cardiologist <span aria-hidden="true">→</span></a>
+        <div class="hero-actions">
+          <a href="book-appointment.html" class="btn btn-violet">Talk with a cardiologist <span aria-hidden="true">→</span></a>
+        </div>
+        <nav class="department-pills" aria-label="Service categories">
+          <a href="#prevention" class="dept-pill">01 · Prevention</a>
+          <a href="#diagnostics" class="dept-pill">02 · Diagnostics</a>
+          <a href="#specialized" class="dept-pill">03 · Specialized evaluation</a>
+        </nav>
       </div>
     </section>
 
-    <section class="content-section">
+    <section class="content-section content-section-light">
       <div class="container">
-        <div class="category-section">
-          <span class="eyebrow">01 · Prevention</span>
-          <h2 class="section-title">Preventive cardiology &amp; risk assessment</h2>
+        <div class="category-section department-row" id="prevention">
+          <div class="department-aside">
+            <span class="eyebrow">01 · Prevention</span>
+            <h2 class="section-title">Preventive cardiology &amp; risk assessment</h2>
+          </div>
           <div class="services-grid">
             <article class="service-card">
+              <div class="service-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.35-7-10a4 4 0 0 1 7-2.65A4 4 0 0 1 19 11c0 5.65-7 10-7 10Z"/></svg>
+              </div>
               <h3>Cardiovascular risk profiling</h3>
               <p>Assessment of personal cardiovascular risk using relevant medical and family history, lifestyle factors, and investigations.</p>
             </article>
             <article class="service-card">
+              <div class="service-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="m9 14 2 2 4-4"/></svg>
+              </div>
               <h3>Risk-factor review</h3>
               <p>Clinical evaluation of factors such as high blood pressure, cholesterol, diabetes, smoking, and weight.</p>
             </article>
             <article class="service-card">
+              <div class="service-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M12 3v18M5 12h14"/><circle cx="12" cy="12" r="9"/></svg>
+              </div>
               <h3>Lifestyle &amp; activity guidance</h3>
               <p>Individualized conversations about physical activity, nutrition, weight management, and long-term risk follow-up.</p>
             </article>
           </div>
         </div>
 
-        <div class="category-section">
-          <span class="eyebrow">02 · Diagnostics</span>
-          <h2 class="section-title">Non-invasive cardiac investigations</h2>
+        <div class="category-section department-row" id="diagnostics">
+          <div class="department-aside">
+            <span class="eyebrow">02 · Diagnostics</span>
+            <h2 class="section-title">Non-invasive cardiac investigations</h2>
+          </div>
           <div class="services-grid">
             <article class="service-card">
+              <div class="service-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg>
+              </div>
               <h3>12-lead electrocardiography (ECG)</h3>
               <p>A recording of the heart’s electrical activity to support assessment of rhythm and other cardiac findings.</p>
             </article>
             <article class="service-card">
+              <div class="service-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4M7 11h3l1.5-3 2 6 1.5-3H17"/></svg>
+              </div>
               <h3>Adult 2D echocardiography</h3>
               <p>Ultrasound imaging to assess heart chambers, wall motion, valve function, and related measures.</p>
             </article>
             <article class="service-card">
+              <div class="service-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4 18V6M4 18h16"/><path d="m7 14 4-4 3 3 5-6"/></svg>
+              </div>
               <h3>Advanced strain imaging (GLS)</h3>
               <p>Specialized echocardiographic imaging to assess myocardial function as part of a clinical evaluation.</p>
             </article>
             <article class="service-card">
+              <div class="service-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+              </div>
               <h3>Ambulatory Holter monitoring</h3>
               <p>Extended ECG recording that can help assess intermittent palpitations and other episodic symptoms.</p>
             </article>
             <article class="service-card">
+              <div class="service-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4 19h16M6 16l10-6M18 16a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z"/></svg>
+              </div>
               <h3>Treadmill stress test (TMT)</h3>
               <p>Assessment of the heart’s response to exercise in a supervised diagnostic setting when clinically appropriate.</p>
             </article>
           </div>
         </div>
 
-        <div class="category-section">
-          <span class="eyebrow">03 · Specialized evaluation</span>
-          <h2 class="section-title">Additional cardiac assessments</h2>
+        <div class="category-section department-row" id="specialized">
+          <div class="department-aside">
+            <span class="eyebrow">03 · Specialized evaluation</span>
+            <h2 class="section-title">Additional cardiac assessments</h2>
+          </div>
           <div class="services-grid">
             <article class="service-card">
+              <div class="service-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M12 3 4 7v5c0 5 3.5 8.5 8 9 4.5-.5 8-4 8-9V7l-8-4Z"/><path d="M12 9v6M9 12h6"/></svg>
+              </div>
               <h3>Cardio-oncology assessment</h3>
               <p>Cardiac evaluation and monitoring for people undergoing or recovering from potentially heart-affecting cancer treatment.</p>
             </article>
             <article class="service-card">
+              <div class="service-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M13 4v4l3 2-2 4h4"/><circle cx="11" cy="4" r="1.5"/><path d="m7 20 3-5 3 2v4"/></svg>
+              </div>
               <h3>Pre-exercise cardiac assessment</h3>
               <p>Cardiovascular evaluation before beginning high-intensity or structured exercise, based on individual risk.</p>
             </article>

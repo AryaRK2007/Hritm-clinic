@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderFooter();
   setActiveNavLink();
   setupMobileNavigation();
+  setupScrollHeader();
 });
 
 function renderHeader() {
@@ -10,10 +11,23 @@ function renderHeader() {
   if (!headerContainer) return;
 
   headerContainer.innerHTML = `
-    <header>
+    <header class="site-header">
+      <div class="clinical-utility-bar">
+        <div class="container utility-bar-inner">
+          <span class="utility-meta">
+            <span class="utility-pulse" aria-hidden="true"></span>
+            <span>Preventive Cardiology &middot; Non-Invasive Cardiac Diagnostics</span>
+          </span>
+          <span class="utility-location">
+            <span>Solapur, Maharashtra, India</span>
+            <span class="utility-divider" aria-hidden="true"></span>
+            <span>Direct consultations by appointment</span>
+          </span>
+        </div>
+      </div>
       <div class="container nav-wrapper">
         <a href="index.html" class="brand-logo" aria-label="Hri-thm Clinic home">
-          <img src="images/logo.png" alt="" />
+          <span class="brand-mark"><img src="images/logo.png" alt="" /></span>
           <span>Hri-thm Clinic</span>
         </a>
 
@@ -30,7 +44,7 @@ function renderHeader() {
             <li><a href="services.html">Services</a></li>
             <li><a href="patient-corner.html">Patient Corner</a></li>
             <li><a href="careers.html">Careers</a></li>
-            <li><a href="book-appointment.html" class="btn btn-violet">Book Appointment</a></li>
+            <li><a href="book-appointment.html" class="btn btn-violet btn-nav">Book Appointment</a></li>
           </ul>
         </nav>
       </div>
@@ -45,13 +59,21 @@ function renderFooter() {
   const currentYear = new Date().getFullYear();
 
   footerContainer.innerHTML = `
-    <footer>
+    <footer class="site-footer">
+      <div class="footer-ecg-rule" aria-hidden="true">
+        <svg viewBox="0 0 1200 32" fill="none" preserveAspectRatio="none">
+          <path d="M0 16H520L536 16L545 6L556 26L566 2L576 29L585 13L593 16H1200" />
+        </svg>
+      </div>
       <div class="container">
         <div class="footer-grid">
-          <div class="footer-col">
-            <h4 style="font-family: var(--font-heading);">Hri-thm Clinic</h4>
-            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Preventive Cardiology | Non-Invasive Cardiac Diagnostics</p>
-            <p style="color: var(--text-muted); font-size: 0.85rem;">Solapur, Maharashtra, India</p>
+          <div class="footer-col footer-brand">
+            <div class="footer-brand-lockup">
+              <span class="brand-mark brand-mark-sm"><img src="images/logo.png" alt="" /></span>
+              <h4>Hri-thm Clinic</h4>
+            </div>
+            <p class="footer-tagline">Preventive Cardiology | Non-Invasive Cardiac Diagnostics</p>
+            <p class="footer-location">Solapur, Maharashtra, India</p>
           </div>
 
           <div class="footer-col">
@@ -65,10 +87,10 @@ function renderFooter() {
             </ul>
           </div>
 
-          <div class="footer-col">
+          <div class="footer-col footer-appointments">
             <h4>Appointments</h4>
-            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem;">Direct consultations by appointment.</p>
-            <a href="book-appointment.html" class="btn btn-violet" style="padding: 0.6rem 1.2rem; font-size: 0.85rem;">Request Slot</a>
+            <p>Direct consultations by appointment.</p>
+            <a href="book-appointment.html" class="btn btn-violet btn-sm">Request Slot</a>
           </div>
         </div>
 
@@ -123,4 +145,16 @@ function setupMobileNavigation() {
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape') closeMenu();
   });
+}
+
+function setupScrollHeader() {
+  const header = document.querySelector('.site-header');
+  if (!header) return;
+
+  const update = () => {
+    header.classList.toggle('is-scrolled', window.scrollY > 12);
+  };
+
+  update();
+  window.addEventListener('scroll', update, { passive: true });
 }
