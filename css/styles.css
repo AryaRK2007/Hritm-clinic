@@ -203,197 +203,262 @@ p {
 }
 
 /* ==========================================================================
-   Site Header — Clinical Utility Bar + Sticky Minimal Navigation
+   Site Header — Floating Full-Pill Navbar with Selective Frosted Glass
    ========================================================================== */
-.site-header {
+#site-header {
   position: sticky;
+  top: 16px;
   z-index: 1000;
-  top: 0;
-  border-bottom: 1px solid var(--line-dark);
-  background: rgba(6, 13, 31, 0.94);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  transition: background 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+  padding: 0 clamp(14px, 3.5vw, 40px);
+  pointer-events: none;
 }
 
-.site-header.is-scrolled {
-  background: rgba(6, 13, 31, 0.98);
-  border-bottom-color: rgba(94, 194, 150, 0.24);
-  box-shadow: 0 12px 32px rgba(4, 9, 24, 0.24);
-}
-
-.clinical-utility-bar {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-  background: rgba(4, 9, 22, 0.72);
-  color: var(--muted-light);
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-}
-
-.utility-bar-inner {
-  display: flex;
-  min-height: 34px;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.utility-meta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-}
-
-.utility-pulse {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--emerald-bright);
-  box-shadow: 0 0 0 3px rgba(94, 194, 150, 0.18);
-}
-
-.utility-location {
-  display: inline-flex;
-  align-items: center;
-  gap: 1rem;
-  color: #9FB0C9;
-}
-
-.utility-divider {
-  width: 1px;
-  height: 12px;
-  background: rgba(255, 255, 255, 0.16);
-}
-
-.nav-wrapper {
+.floating-nav-wrap {
   position: relative;
-  display: flex;
-  min-height: 74px;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
+  max-width: 1340px;
+  margin: 0 auto;
+  pointer-events: auto;
 }
 
-.brand-logo {
-  display: inline-flex;
-  flex: 0 0 auto;
-  align-items: center;
-  gap: 0.8rem;
-  color: var(--text-light);
-  text-decoration: none;
-}
-
-.brand-mark {
+/* Full-rounded Stadium Pill Container */
+.floating-nav-pill {
   display: grid;
-  width: 40px;
-  height: 40px;
-  padding: 4px;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 10px 12px 10px 26px;
+  border-radius: 9999px;
+
+  /* Selective Glass Gradient (solid edges, frosted translucent center) */
+  background: linear-gradient(
+    90deg,
+    rgba(11, 20, 43, 0.92) 0%,
+    rgba(17, 29, 59, 0.56) 24%,
+    rgba(17, 29, 59, 0.52) 76%,
+    rgba(11, 20, 43, 0.92) 100%
+  );
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+
+  /* Crisp Specular Glass Border & Depth Shadow */
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow:
+    0 14px 38px -8px rgba(3, 7, 18, 0.48),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.24),
+    inset 0 -1px 0 0 rgba(94, 194, 150, 0.14);
+
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    padding 0.3s ease;
+}
+
+/* Deeper contrast when scrolling over white/alabaster page sections */
+.floating-nav-wrap.is-scrolled .floating-nav-pill {
+  padding: 8px 10px 8px 24px;
+  background: linear-gradient(
+    90deg,
+    rgba(6, 13, 31, 0.95) 0%,
+    rgba(11, 20, 43, 0.82) 25%,
+    rgba(11, 20, 43, 0.82) 75%,
+    rgba(6, 13, 31, 0.95) 100%
+  );
+  border-color: rgba(94, 194, 150, 0.32);
+  box-shadow:
+    0 18px 44px -8px rgba(3, 7, 18, 0.62),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.22);
+}
+
+/* Left: Brand Emblem + Wordmark */
+.nav-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--clinical-white);
+}
+
+.nav-logo-badge {
+  display: grid;
   place-items: center;
-  border: 1px solid rgba(94, 194, 150, 0.45);
-  border-radius: 10px;
+  width: 38px;
+  height: 38px;
+  padding: 5px;
+  border-radius: 50%;
   background: var(--clinical-white);
-  transition: transform 200ms ease, border-color 200ms ease;
+  border: 1px solid rgba(94, 194, 150, 0.45);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.22);
+  transition: transform 0.25s ease;
 }
 
-.brand-logo:hover .brand-mark {
-  transform: translateY(-1px);
-  border-color: var(--emerald-bright);
+.nav-brand:hover .nav-logo-badge {
+  transform: scale(1.05);
 }
 
-.brand-mark img {
+.nav-logo {
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
 
-.brand-mark-sm {
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-}
-
-.brand-logo span:last-child {
-  font-size: 1.05rem;
+.nav-wordmark {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
   font-weight: 700;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.1em;
+  color: var(--text-light);
 }
 
+/* Center: Navigation Links */
 .nav-links {
   display: flex;
   align-items: center;
-  gap: clamp(1rem, 2vw, 1.9rem);
+  justify-content: center;
+  gap: clamp(1.25rem, 2.5vw, 2.35rem);
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.nav-links a:not(.btn) {
+.nav-link {
   position: relative;
-  padding-block: 0.4rem;
-  color: #CFD9E8;
-  font-size: 0.84rem;
+  padding: 6px 4px;
+  color: rgba(248, 250, 252, 0.84);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--emerald-bright);
+  font-weight: 600;
+}
+
+/* Right: Full-Pill CTA Button with Glowing Dot */
+.nav-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-pill-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 24px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #16254c 0%, #091126 100%);
+  border: 1px solid rgba(168, 85, 247, 0.45);
+  color: var(--clinical-white);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
   font-weight: 600;
   text-decoration: none;
-  letter-spacing: 0.015em;
-  transition: color 180ms ease;
+  box-shadow:
+    0 6px 20px rgba(115, 28, 230, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  transition: all 0.25s ease;
 }
 
-.nav-links a:not(.btn)::after {
-  position: absolute;
-  right: 0;
-  bottom: -2px;
-  left: 0;
-  height: 2px;
-  border-radius: 2px;
+.nav-pill-cta .cta-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
   background: var(--emerald-bright);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 200ms ease;
-  content: "";
+  box-shadow: 0 0 8px var(--emerald-bright);
 }
 
-.nav-links a:not(.btn):hover,
-.nav-links a:not(.btn).active {
+.nav-pill-cta:hover {
+  background: linear-gradient(135deg, var(--violet) 0%, var(--violet-hover) 100%);
+  border-color: rgba(216, 180, 254, 0.55);
   color: var(--clinical-white);
-}
-
-.nav-links a:not(.btn):hover::after,
-.nav-links a:not(.btn).active::after {
-  transform: scaleX(1);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 26px rgba(115, 28, 230, 0.42);
 }
 
 .nav-toggle {
   display: none;
-  width: 42px;
-  height: 42px;
-  padding: 9px;
-  border: 1px solid rgba(94, 194, 150, 0.35);
-  border-radius: var(--radius-xs);
-  background: var(--navy-raised);
-  cursor: pointer;
 }
 
-.nav-toggle span {
-  display: block;
-  width: 100%;
-  height: 1.5px;
-  margin: 5px 0;
-  border-radius: 2px;
-  background: var(--text-light);
-  transition: transform 200ms ease, opacity 200ms ease;
+/* Pull both home and inner heroes smoothly underneath the floating pill */
+.home-hero,
+.page-hero {
+  padding-top: calc(clamp(3.5rem, 6.5vw, 5.75rem) + 76px);
+  margin-top: -76px;
 }
 
-.site-header.mobile-nav-open .nav-toggle span:nth-child(1) {
-  transform: translateY(6.5px) rotate(45deg);
-}
+@media (max-width: 920px) {
+  .floating-nav-pill {
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    padding: 8px 10px 8px 18px;
+  }
 
-.site-header.mobile-nav-open .nav-toggle span:nth-child(2) {
-  opacity: 0;
-}
+  .nav-links {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.25rem;
+    padding: 1rem;
+    border-radius: 24px;
+    background: rgba(6, 13, 31, 0.95);
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+    border: 1px solid rgba(94, 194, 150, 0.3);
+    box-shadow: 0 24px 48px rgba(3, 7, 18, 0.65);
+  }
 
-.site-header.mobile-nav-open .nav-toggle span:nth-child(3) {
-  transform: translateY(-6.5px) rotate(-45deg);
+  .floating-nav-wrap.mobile-nav-open .nav-links {
+    display: flex;
+  }
+
+  .nav-link {
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+  }
+
+  .nav-pill-cta {
+    padding: 10px 16px;
+    font-size: 0.82rem;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    cursor: pointer;
+    padding: 0 10px;
+  }
+
+  .nav-toggle span {
+    display: block;
+    width: 100%;
+    height: 1.5px;
+    background: var(--clinical-white);
+    transition: transform 0.2s ease;
+  }
+
+  .floating-nav-wrap.mobile-nav-open .nav-toggle span:nth-child(1) {
+    transform: translateY(3.25px) rotate(45deg);
+  }
+
+  .floating-nav-wrap.mobile-nav-open .nav-toggle span:nth-child(2) {
+    transform: translateY(-3.25px) rotate(-45deg);
+  }
 }
 
 /* ==========================================================================
@@ -2286,6 +2351,224 @@ p {
     grid-column: auto;
   }
 }
+
+/* ==========================================================================
+   Interactive Motion & Micro-Animations
+   ========================================================================== */
+
+/* 1. Live ECG Trace Animation (Hero & Footer) */
+.hero-ecg-bg path,
+.footer-ecg-rule path {
+  stroke-dasharray: 1600;
+  stroke-dashoffset: 1600;
+  animation: ecgPulseDraw 5.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes ecgPulseDraw {
+  0% {
+    stroke-dashoffset: 1600;
+    opacity: 0.2;
+  }
+  45% {
+    stroke-dashoffset: 0;
+    opacity: 0.9;
+  }
+  80% {
+    stroke-dashoffset: 0;
+    opacity: 0.7;
+  }
+  100% {
+    stroke-dashoffset: -1600;
+    opacity: 0.2;
+  }
+}
+
+/* 2. Eyebrow & CTA Dot Heartbeat Pulse */
+.eyebrow-dot,
+.nav-pill-cta .cta-dot {
+  animation: clinicalHeartbeat 2.4s ease-in-out infinite;
+}
+
+@keyframes clinicalHeartbeat {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(94, 194, 150, 0.55);
+  }
+  18% {
+    transform: scale(1.3);
+    box-shadow: 0 0 0 6px rgba(94, 194, 150, 0);
+  }
+  34% {
+    transform: scale(1.05);
+  }
+  48% {
+    transform: scale(1.24);
+    box-shadow: 0 0 0 8px rgba(94, 194, 150, 0);
+  }
+}
+
+/* 3. Hero Entrance Choreography (Immediate on Load) */
+.home-hero-copy > * {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroFadeUp 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.home-hero-copy .home-eyebrow { animation-delay: 0.08s; }
+.home-hero-copy h1 { animation-delay: 0.18s; }
+.home-hero-copy > p { animation-delay: 0.28s; }
+.home-hero-copy .home-hero-actions { animation-delay: 0.38s; }
+.home-hero-copy .home-hero-note { animation-delay: 0.48s; }
+
+.home-hero-visual {
+  opacity: 0;
+  transform: translateY(24px) scale(0.98);
+  animation: heroVisualIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.22s forwards;
+}
+
+@keyframes heroFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroVisualIn {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Floating Ambient Depth on Experience Stamp & Portrait Frame */
+.experience-stamp {
+  animation: floatBadge 5s ease-in-out infinite;
+}
+
+.visual-accent {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.home-hero-visual:hover .visual-accent {
+  transform: translate(6px, 6px);
+}
+
+.portrait-frame img {
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.home-hero-visual:hover .portrait-frame img {
+  transform: scale(1.03);
+}
+
+@keyframes floatBadge {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+/* 4. Scroll-Triggered Reveal System */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 5. Interactive Service Cards & Magnetic Arrow Micro-interactions */
+.home-service-card,
+.service-card,
+.principle-card {
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.home-service-icon,
+.service-card-icon {
+  transition:
+    transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.home-service-card:hover .home-service-icon,
+.service-card:hover .service-card-icon {
+  transform: scale(1.1) rotate(-4deg);
+  background: var(--emerald);
+  color: var(--clinical-white);
+}
+
+/* Arrow Glide on Hover */
+.btn span[aria-hidden="true"],
+.text-link span[aria-hidden="true"],
+.intro-link span[aria-hidden="true"],
+.home-service-card a span[aria-hidden="true"] {
+  display: inline-block;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.btn:hover span[aria-hidden="true"],
+.text-link:hover span[aria-hidden="true"],
+.intro-link:hover span[aria-hidden="true"],
+.home-service-card a:hover span[aria-hidden="true"] {
+  transform: translateX(4px);
+}
+
+/* 6. Button Shimmer Sweep */
+.btn-violet,
+.nav-pill-cta {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-violet::before,
+.nav-pill-cta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.22),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: left 0.65s ease;
+}
+
+.btn-violet:hover::before,
+.nav-pill-cta:hover::before {
+  left: 140%;
+}
+
+/* 7. Scroll Progress Line Inside Floating Pill */
+.nav-scroll-progress {
+  position: absolute;
+  bottom: 0;
+  left: 28px;
+  right: 28px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--violet-bright), var(--emerald-bright));
+  transform: scaleX(0);
+  transform-origin: left;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
 
 @media (prefers-reduced-motion: reduce) {
   *,
