@@ -15,6 +15,15 @@
 <body class="about-page">
   <a class="skip-link" href="#main-content">Skip to content</a>
   <div id="site-header"></div>
+
+    <!-- Place this where you want the translation trigger to appear (e.g., in your navbar or footer) -->
+    <button id="translate-btn" class="btn btn-ghost-light btn-sm" type="button">
+      <span>🌐 Translate / ಭಾಷಾಂತರಿಸಿ</span>
+    </button>
+
+    <!-- Hidden container where Google Translate will render its dropdown -->
+    <div id="google_translate_element" style="display: none;"></div>
+    
   <main id="main-content">
     <section class="page-hero page-hero-split">
       <div class="hero-ecg-bg" aria-hidden="true">
@@ -112,5 +121,16 @@
   </main>
   <div id="site-footer"></div>
   <script src="assets/main.js"></script>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'hi,mr,en,kn', // Specify the languages you want to support
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 </body>
 </html>

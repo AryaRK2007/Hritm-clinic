@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setupMobileNavigation();
   setupScrollHeader();
   setupInteractiveAnimations();
+  initGoogleTranslate();
 });
 
 function renderHeader() {
@@ -30,6 +31,9 @@ function renderHeader() {
         </nav>
 
         <div class="nav-actions">
+          <!-- Google Translate Widget Container -->
+          <div id="google_translate_element"></div>
+
           <a href="book-appointment.html" class="nav-pill-cta">
             <span class="cta-dot" aria-hidden="true"></span>
             <span>Book Appointment</span>
@@ -167,7 +171,6 @@ function setupInteractiveAnimations() {
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (prefersReduced) return;
 
-  // 1. Add scroll progress bar inside the floating pill navbar
   const pill = document.querySelector('.floating-nav-pill');
   if (pill) {
     const progressBar = document.createElement('span');
@@ -186,29 +189,16 @@ function setupInteractiveAnimations() {
     updateProgress();
   }
 
-  // 2. Scroll-triggered staggered reveals across all pages
   const revealSelectors = [
-    '.intro-grid > *',
-    '.section-heading',
-    '.section-header',
-    '.home-service-card',
-    '.finder-panel',
-    '.home-cta-inner',
-    '.emergency-banner',
-    '.principle-card',
-    '.service-card',
-    '.editorial-split > *',
-    '.faq-item',
-    '.form-panel',
-    '.info-card',
-    '.career-panel',
-    '.inline-cta'
+    '.intro-grid > *', '.section-heading', '.section-header', '.home-service-card',
+    '.finder-panel', '.home-cta-inner', '.emergency-banner', '.principle-card',
+    '.service-card', '.editorial-split > *', '.faq-item', '.form-panel',
+    '.info-card', '.career-panel', '.inline-cta'
   ];
 
   const targets = document.querySelectorAll(revealSelectors.join(','));
-  targets.forEach((el, idx) => {
+  targets.forEach((el) => {
     el.classList.add('reveal-on-scroll');
-    // Stagger siblings inside grids
     const siblingIndex = Array.from(el.parentElement?.children || []).indexOf(el);
     el.style.setProperty('--reveal-delay', `${Math.min(siblingIndex * 85, 360)}ms`);
   });
@@ -225,45 +215,25 @@ function setupInteractiveAnimations() {
     { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
   );
 
-  targets.forEach((el) => observer.observe(el));
+    targets.forEach((el) => observer.observe(el));
+}
 
-  // 3. Smooth count-up animation for "14+" experience stamp
-  const stampNumber = document.querySelector('.stamp-number');
-  if (stampNumber) {
-    const targetVal = 14;
-    const duration = 1200;
-    const startTime = performance.now();
+// Non-blocking asynchronous Google Translate loader
+function initGoogleTranslate() {
+  window.googleTranslateElementInit = function() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'hi,mr,kn,en', // Hindi, Marathi, Kannada, Spanish, German, Arabic
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+  };
 
-    const animateCounter = (now) => {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      // Ease-out cubic
-      const eased = 1 - Math.pow(1 - progress, 3);
-      const current = Math.round(eased * targetVal);
-      stampNumber.innerHTML = `${current}<span>+</span>`;
-      if (progress < 1) requestAnimationFrame(animateCounter);
-    };
-
-    requestAnimationFrame(animateCounter);
-  }
-
-  // 4. Subtle 3D perspective tilt on hero portrait (desktop only)
-  const heroVisual = document.querySelector('.home-hero-visual');
-  const portraitFrame = document.querySelector('.portrait-frame');
-  if (heroVisual && portraitFrame && window.matchMedia('(pointer: fine)').matches) {
-    heroVisual.addEventListener('mousemove', (e) => {
-      const rect = heroVisual.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width - 0.5;
-      const y = (e.clientY - rect.top) / rect.height - 0.5;
-      portraitFrame.style.transform = `perspective(900px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg)`;
-    });
-
-    heroVisual.addEventListener('mouseleave', () => {
-      portraitFrame.style.transition = 'transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)';
-      portraitFrame.style.transform = 'perspective(900px) rotateY(0deg) rotateX(0deg)';
-      setTimeout(() => {
-        portraitFrame.style.transition = '';
-      }, 500);
-    });
+  if (!document.getElementById('google-translate-script')) {
+    const script = document.createElement('script');
+    script.id = 'google-translate-script';
+    script.type = 'text/javascript';
+    script.async = true;
+    script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    document.body.appendChild(script);
   }
 }

@@ -89,7 +89,7 @@ body {
   min-width: 320px;
   margin: 0;
   overflow-x: hidden;
-  background: var(--clinical-white);
+  background: var(--navy-deep); /* Changed from --clinical-white to dark navy */
   color: var(--text-dark);
   font-family: var(--font-body);
   font-size: 16px;
@@ -206,11 +206,14 @@ p {
    Site Header — Floating Full-Pill Navbar with Selective Frosted Glass
    ========================================================================== */
 #site-header {
-  position: sticky;
-  top: 16px;
+  position: sticky !important;
+  top: 0 !important;
+  padding-top: 12px !important;
   z-index: 1000;
-  padding: 0 clamp(14px, 3.5vw, 40px);
-  pointer-events: none;
+}
+/*Push the floating navbar down when Google Translate bar is active*/
+body.translate-active #site-header {
+  top: 56px !important; /* 40px translate banner height + 16px gap */
 }
 
 .floating-nav-wrap {
@@ -2578,4 +2581,131 @@ p {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
   }
+}
+
+
+/* ==========================================================================
+   Google Translate Pill Widget Styling
+   ========================================================================== */
+#google_translate_element {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Hide Google's default branding/watermark text */
+.goog-logo-link,
+.goog-te-gadget img,
+.VIpgJd-ZVi9od-ORHb-OEVmcd {
+  display: none !important;
+}
+
+.goog-te-gadget {
+  font-size: 0 !important;
+  color: transparent !important;
+}
+
+/* Style the dropdown menu to match your dark pill theme */
+.goog-te-combo {
+  padding: 8px 14px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--text-light) !important;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.goog-te-combo:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: var(--emerald-bright);
+}
+
+.goog-te-combo option {
+  background: var(--navy-deep);
+  color: #FFFFFF;
+}
+/* ==========================================================================
+   Google Translate Widget Cleanup & Header Position Fix
+   ========================================================================== */
+
+/* 1. Pull the header back up to the top */
+#site-header {
+  position: sticky !important;
+  top: 12px !important; /* Adjust closer to the top edge */
+}
+
+/* 2. Hide Google Translate branding icons/images completely */
+.goog-logo-link,
+.goog-te-gadget img,
+.VIpgJd-ZVi9od-ORHb-OEVmcd {
+  display: none !important;
+}
+
+/* 3. Style the translate gadget container to sit neatly inside the pill */
+#google_translate_element {
+  display: inline-flex;
+  align-items: center;
+}
+
+.goog-te-gadget {
+  font-size: 0 !important; /* Hide text like "Powered by Google Translate" */
+  color: transparent !important;
+}
+
+/* Compact Dark Select Dropdown */
+.goog-te-combo {
+  padding: 6px 12px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: var(--text-light) !important;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.goog-te-combo:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--emerald-bright);
+}
+
+.goog-te-combo option {
+  background: var(--navy-deep);
+  color: #FFFFFF;
+}
+/* ==========================================================================
+   Remove Google Translate Top Gap / White Space
+   ========================================================================== */
+
+/* 1. Completely hide Google's translation banner frame */
+.goog-te-banner-frame,
+.goog-te-banner-frame.skiptranslate,
+iframe.goog-te-banner-frame {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  width: 0 !important;
+  position: absolute !important;
+  top: -9999px !important;
+}
+
+/* 2. Neutralize the body offset that Google scripts try to impose */
+html, body {
+  top: 0 !important;
+  position: static !important;
+  margin-top: 0 !important;
+}
+
+/* 3. Lock your floating navigation header to the top */
+#site-header {
+  position: sticky !important;
+  top: 16px !important;
+  margin-top: 0 !important;
 }
