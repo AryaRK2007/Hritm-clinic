@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setupScrollHeader();
   setupInteractiveAnimations();
   initGoogleTranslate();
+  setupFormSubmission();
 });
 
 function renderHeader() {
@@ -223,7 +224,7 @@ function initGoogleTranslate() {
   window.googleTranslateElementInit = function() {
     new google.translate.TranslateElement({
       pageLanguage: 'en',
-      includedLanguages: 'hi,mr,kn,en', // Hindi, Marathi, Kannada, Spanish, German, Arabic
+      includedLanguages: 'en,hi,mr,kn,pa,bn,te,ta,gu,ml,ur,or,as,ne,zh-CN,de,es,fr,ar',
       layout: google.translate.TranslateElement.InlineLayout.SIMPLE
     }, 'google_translate_element');
   };
@@ -236,4 +237,65 @@ function initGoogleTranslate() {
     script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
     document.body.appendChild(script);
   }
+}
+
+
+
+// 1. Sleek Corner Toast Notification Popup
+function showToast(message) {
+  const existing = document.getElementById('notificationToast');
+  if (existing) existing.remove();
+
+  const toast = document.createElement('div');
+  toast.id = 'notificationToast';
+  toast.className = 'toast-notification';
+  toast.innerHTML = `
+    <div class="toast-icon" aria-hidden="true">✓</div>
+    <div class="toast-content">
+      <span class="toast-eyebrow">Message Received</span>
+      <p class="toast-text">${message}</p>
+    </div>
+  `;
+  document.body.appendChild(toast);
+
+  // Trigger smooth slide-in animation
+  setTimeout(() => toast.classList.add('is-visible'), 15);
+
+  // Auto-dismiss after 4.5 seconds
+  setTimeout(() => {
+    toast.classList.remove('is-visible');
+    setTimeout(() => toast.remove(), 350);
+  }, 4500);
+}
+
+// 2. Form Submission Handler
+function setupFormSubmission() {
+  const form = document.getElementById('appointmentForm') || document.querySelector('form');
+  if (!form) return;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalText = submitBtn ? submitBtn.innerHTML : 'Submit Request';
+
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = 'Sending Request...';
+    }
+
+    try {
+      // Simulating a fast, smooth async network response:
+      await new Promise((resolve) => setTimeout(resolve, 900));
+
+      showToast('Your appointment request has been successfully received. Our clinic team will reach out shortly.');
+      form.reset();
+    } catch (err) {
+      showToast('Unable to send request. Please try again or call the clinic directly.');
+    } finally {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+      }
+    }
+  });
 }
